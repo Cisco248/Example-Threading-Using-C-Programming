@@ -36,8 +36,24 @@
     Let's Use the Race Condition 
     ****************************
     
-    
+    We are Using Lock Variable Function to Fix This Issue
 
+    int mails = 0;
+    int lock = 0;
+
+    void* routine() {
+        for (int i = 0; i < 10000000; i++) {
+            if (lock == 1) {
+                // wait until the lock is = 0
+                lock = 1;
+                mails++;
+                lock = 0;
+            }
+            
+        }
+    }
+
+    This is the Solution. So in This Process Thread by Thread Execution. 
 
 }*/
 
@@ -48,11 +64,17 @@
 #include <unistd.h>
 
 int mails = 0;
+int lock = 0;
 
 void* routine() {
-    for (int i = 0; i < 10000000; i++)
-    {
-        mails++;
+    for (int i = 0; i < 10000000; i++) {
+        if (lock == 1) {
+            // wait until the lock is = 0
+            lock = 1;
+            mails++;
+            lock = 0;
+        }
+        
     }
 }
 

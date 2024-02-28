@@ -1,6 +1,6 @@
 # Unix Threads In C Language Sample Codes
 
-✨ Thread Programming ✨
+## ✨ Thread Programming ✨
 
 - Lesson 01 - What is Thread and Sample Code
 - Lesson 02 - Difference Between Threads vs Processes

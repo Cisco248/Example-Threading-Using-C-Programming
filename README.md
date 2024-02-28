@@ -1,7 +1,5 @@
 # Unix Threads In C Language Sample Codes
 
-[![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)]
-
 ✨ Thread Programming ✨
 
 - Lesson 01 - What is Thread and Sample Code

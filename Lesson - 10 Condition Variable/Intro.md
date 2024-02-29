@@ -81,3 +81,17 @@
           
               return 0;
           }
+
+In this example, a producer thread produces items and adds them to a shared buffer, while a consumer thread consumes items from the buffer. The condition variables cond_producer and cond_consumer are used to signal and wait for specific conditions.
+
+Here's how it works:
+
+- The pthread_cond_wait function is used to make a thread wait until a condition is signaled. It is always used inside a while loop that checks the actual condition because spurious wake-ups (unexpected wake-ups without a   real signal) can occur.
+
+- When the producer adds an item to the buffer, it signals the consumer using pthread_cond_signal(&cond_consumer), indicating that there is an item available for consumption.
+
+- The consumer, upon consuming an item, signals the producer using pthread_cond_signal(&cond_producer), indicating that there is space available in the buffer for a new item.
+
+- The use of condition variables helps avoid busy-waiting and allows threads to sleep efficiently until the required condition is met, improving overall performance and resource utilization.
+
+In summary, condition variables provide a way for threads to communicate about the state of shared data and coordinate their activities, enabling more efficient and synchronized multithreaded programming.

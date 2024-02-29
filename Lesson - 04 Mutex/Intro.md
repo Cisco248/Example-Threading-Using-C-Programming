@@ -6,7 +6,7 @@
 ### Headers
 - #include <stdio.h>
 - #include <stdlib.h>
-- #include <pthread.h>}
+- #include <pthread.h>
   
         #define NUM_THREADS 5
 
@@ -63,3 +63,7 @@
         
             return 0;
         }
+
+- In this example, we have a shared variable sharedVariable that multiple threads increment within a critical section. The pthread_mutex_t mutex is used to protect access to this critical section. The pthread_mutex_lock function is called before entering the critical      section, and pthread_mutex_unlock is called after leaving it.
+
+- This ensures that only one thread can be inside the critical section at a time, preventing race conditions and ensuring that the shared resource is updated correctly. The usleep function is used to simulate some work being done inside the critical section.

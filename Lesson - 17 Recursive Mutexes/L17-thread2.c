@@ -2,40 +2,23 @@
 Recursive Mutex Lock
 --------------------
 
-Firstly, We are setup the our Program Mutex lock. 
-After we can see the mutex lock and like this.
+We Need to Unlock the all Threads From Reecursive Lock Function.
 
-1 - (This Variable is in the Global Variable)
-    # pthread_mutex_t mutexFuel;
-
-2 - (This initializer in the main function)
-    # pthread_mutex_init(&mutexFuel, NULL);
-
-3 - (Between many Code !!! After the All Codes)
-    # pthread_mutex_destroy(&mutexFuel);
-
-This is Recursive Mutex Lock Design firstly We Need to Create the the Variables
-
-1 - (This Variable in the Main Function)
-    pthread_mutexattr_t recursiveMutexAttributes;
-    
-2 - (This initializer in the main function)
-    pthread_mutexattr_init (&recursiveMutexAttributes);
-
-3 - (Between many Code !!! After the All Codes)
-    pthread_mutexattr_settype(&recursiveMutexAttributes, PTHREAD_MUTEX_RECURSIVE);
-
-This is the Routine Funtion Using Double Lock.. Because We need to Hold and Lock the all Threads.
+Follow the These Method: 
 
     void* routine(void* args) {
+
         pthread_mutex_lock(&mutexFuel);
         pthread_mutex_lock(&mutexFuel);
+
         fuel += 50;
+
         printf("Incremented Fuel to %d\n", fuel);
+
+        pthread_mutex_unlock(&mutexFuel);
         pthread_mutex_unlock(&mutexFuel);
     }
 
-After This Doing all these Code: 
 */
 
 #include <pthread.h>
@@ -55,6 +38,7 @@ void* routine(void* args) {
     pthread_mutex_lock(&mutexFuel);
     fuel += 50;
     printf("Incremented Fuel to %d\n", fuel);
+    pthread_mutex_unlock(&mutexFuel);
     pthread_mutex_unlock(&mutexFuel);
 }
 

@@ -27,7 +27,7 @@ void* routine(void* args) {
 
 int main (int argc, char *argv[]) {
     pthread_t th[THREAD_NUM];
-    sem_init(&semaphore, 0, 1);
+    sem_init(&semaphore, 0, 2);
     int i;
     for (i = 0; i < THREAD_NUM; i++) {
         int* a = malloc(sizeof(int));

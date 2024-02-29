@@ -12,5 +12,8 @@
 - Lesson 08 - Excersice Code for Study
 - Lesson 09 - Difference Between Trylock and Lock
 - Lesson 10 - Codition Variable [ wait, broadcast, signal ]
-- Lesson 11 -
+- Lesson 11 - Example for Trylock
+- Lesson 12 - Define the pthread_exit()
+- Lesson 13 - Explain the pthread_barrier [ wait, init, destroy ]
+- Lesson 14 - Example for the Barrier
 
